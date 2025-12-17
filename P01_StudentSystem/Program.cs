@@ -79,11 +79,15 @@ namespace P01_StudentSystem
             Console.Write("Enter Phone Number (optional): ");
             string phoneNumber = Console.ReadLine();
 
+            Console.Write("Enter Your BirthDay  (optional): ");
+            DateTime birthday = Convert.ToDateTime(Console.ReadLine());
+
             var student = new Student
             {
                 Name = name,
                 PhoneNumber = phoneNumber,
-                RegisteredOn = DateTime.Now
+                RegisteredOn = DateTime.Now,
+                Birthday = birthday
             };
 
             context.Students.Add(student);
@@ -99,7 +103,12 @@ namespace P01_StudentSystem
             string courseName = Console.ReadLine();
 
             Console.Write("Enter Course Price: ");
-            decimal price = decimal.Parse(Console.ReadLine());
+            decimal price;
+            while (!decimal.TryParse(Console.ReadLine(), out price))
+            {
+                Console.WriteLine("Invalid price. Please enter a valid decimal value.");
+            }
+
 
             var course = new Course
             {
@@ -131,6 +140,13 @@ namespace P01_StudentSystem
             Console.Write("Enter Course ID to associate with this Resource: ");
             int courseId = int.Parse(Console.ReadLine());
 
+            var courseExists = context.Courses.Any(c => c.CourseId == courseId);
+            if (!courseExists)
+            {
+                Console.WriteLine("Course not found!");
+                return;
+            }
+
             var resource = new Resource
             {
                 Name = resourceName,
@@ -144,6 +160,7 @@ namespace P01_StudentSystem
 
             Console.WriteLine("\nResource Added Successfully!");
         }
+
 
         // Method to Add Homework===============================================
         static void AddHomework(ApplicationDbContext context)

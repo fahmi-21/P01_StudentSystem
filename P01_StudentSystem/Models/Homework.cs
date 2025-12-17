@@ -13,7 +13,11 @@ namespace P01_StudentSystem.Models
 
     public class Homework
     {
+        [Key]
         public int HomeworkId { get; set; }
+
+        [Unicode(false)]
+        [MaxLength(300)]
         public string Content { get; set; } = string.Empty;
         public ContentType ContentType { get; set; }
         public DateTime SubmissionTime { get; set; }

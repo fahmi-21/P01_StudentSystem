@@ -14,11 +14,11 @@ namespace P01_StudentSystem.Models
 
     public class Resource
     {
-        //[Key]
+        [Key]
         public int ResourceId { get; set; }
 
-        //[Unicode (true)]
-        //[MaxLength(50)]
+        [Unicode(true)]
+        [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
 
         [Unicode (false)]

@@ -7,21 +7,22 @@ namespace P01_StudentSystem.Models
 {
     public class Course
     {
-        //[Key]
+        [Key]
         public int CourseId { get; set; }
 
-        
-        //[MaxLength(80)]
+
+        [MaxLength(80)]
+        [Unicode (true)]
         public string Name { get; set; }= string.Empty;
 
-        //[Unicode (true)]
+
+        [Unicode(true)]
         public string? Description { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public decimal Price { get; set; }
 
-        // Navigation properties
         public ICollection<Resource> Resources { get; set; }
         public ICollection<Homework> HomeworkSubmissions { get; set; }
         public ICollection<StudentCourse> StudentCourses { get; set; }

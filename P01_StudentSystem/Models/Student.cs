@@ -10,12 +10,12 @@ namespace P01_StudentSystem.Models
     {
         public int StudentId { get; set; }
 
-        //[Unicode (true)]
-        //[MaxLength(100)]
+        [Unicode(true)]
+        [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
 
-        //[StringLength(10)]
-        //[Unicode (false)]
+        [StringLength(10)]
+        [Unicode(false)]
         public string? PhoneNumber { get; set; }
 
         public DateTime RegisteredOn { get; set; }
